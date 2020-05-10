@@ -1,19 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{$store.getters.getCount}}</h1>
+    <button @click="add">Add</button>
+    <hr />
+    <ComA />
+    <hr />
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import ComA from "./components/ComA.vue";
 
 export default {
-  name: 'App',
+  name: "App",
+  mounted() {
+    setInterval(() => {
+      // this.$store.state.count++;
+    }, 1000);
+  },
+  methods: {
+    add() {
+      this.$store.dispatch("addAction");
+    }
+  },
   components: {
-    HelloWorld
+    HelloWorld,
+    ComA
   }
-}
+};
 </script>
 
 <style>
